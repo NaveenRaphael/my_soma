@@ -373,8 +373,8 @@ def train_soma_once(job_args):
         logger.info(f'Loaded finetuning weights from {cfg.trainer.finetune_checkpoint_fname}')
 
     trainer = pl.Trainer(gpus=1 if cfg.trainer.fast_dev_run else cfg.trainer.num_gpus,
-                         weights_summary=cfg.trainer.weights_summary,
-                         distributed_backend=None if cfg.trainer.fast_dev_run else cfg.trainer.distributed_backend,
+                        #  weights_summary=cfg.trainer.weights_summary,
+                        #  distributed_backend=None if cfg.trainer.fast_dev_run else cfg.trainer.distributed_backend,
                          profiler=cfg.trainer.profiler,
                          plugins=None if cfg.trainer.fast_dev_run else [DDPPlugin(find_unused_parameters=False)],
                          fast_dev_run=cfg.trainer.fast_dev_run,
@@ -385,7 +385,8 @@ def train_soma_once(job_args):
                          max_epochs=cfg.trainer.max_epochs,
                          logger=[tboard_logger, csv_logger],
                          resume_from_checkpoint=resume_checkpoint_fname,
-                         deterministic=cfg.trainer.deterministic,
+                         deterministic=False
+                        #  cfg.trainer.deterministic,
                          )
 
     trainer.fit(model, soma_dm)
