@@ -128,3 +128,20 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .idea/
+support_files/evaluation_mocaps/original/SOMA_unlabeled_mpc
+support_files/marker_layouts/SOMA/soma_subject1
+support_files/smplx/amass_neutral/ACCAD
+support_files/smplx/amass_neutral/CMU
+support_files/smplx/amass_neutral/HumanEva
+support_files/smplx/amass_neutral/PosePrior
+support_files/smplx/amass_neutral/TotalCapture
+support_files/smplx/amass_neutral/Transitions
+support_files/smplx/female
+support_files/smplx/male
+support_files/smplx/neutral
+support_files/smplx/APose.npz
+support_files/smplx/LICENSE.txt
+support_files/smplx/body_mean_values.npz
+support_files/smplx/pose_body_prior.pkl
+support_files/smplx/pose_hand_prior.npz
+support_files/ssm_head_marker_corr.npz
