@@ -13,10 +13,26 @@ because duh
 
 Note that you have to install the mesh using the make command; otherwise it does not run
 
+Consider putting [`smpl-fast-derivatives.tar.bz2`](https://download.is.tue.mpg.de/download.php?domain=soma&sfile=smpl-fast-derivatives.tar.bz2) and [`bpy-2.83-20200908.tar.bz2`](https://download.is.tue.mpg.de/download.php?domain=soma&sfile=blender/bpy-2.83-20200908.tar.bz2) in this folder, so as to copy paste the commands in weird.sh to create the conda environment (using mamba, which is obviously better)
+
+# Possible issues
+Did jugaad when installing blender py; probably not gonna work tbh
+
+How the heck am I supposed to 
+```
+        'trainer.fast_dev_run': True, # if true then only one iteration of training and validation is done.
+
+```
+
+I cannot make that true without it giving a version error; and I cannot find which version is supposed to work?
+(Because of this, i needed to use the default trained SOMA)
+
+
 # Files downloaded 
 
 ```
 ├── data
+│   ├── [V48_01_SOMA](download.is.tue.mpg.de/download.php?domain=soma&sfile=smplx/data/V48_01_SOMA.tar.bz2)
 │   └── V48_02_SOMA (Generated on run of first cell)
 │       ├── body_dataset
 │       └── marker_dataset
@@ -40,12 +56,9 @@ Note that you have to install the mesh using the make command; otherwise it does
 │       └── neutral
 └── training_experiments (generated on first cell)
     └── V48_02_SOMA
-        └── OC_05_G_03_real_000_synt_100
+        └── [OC_05_G_03_real_000_synt_100](https://download.is.tue.mpg.de/download.php?domain=soma&sfile=training_experiments/V48_02_SOMA.tar.bz2) (almost all)
+            ├── code
+            ├── evaluations
+            ├── snapshots 
+            └── V48_02_SOMA_OC_05_G_03_real_000_synt_100.yaml (Generated; dont change)
 ```
-
-
-
-
-
-
-185 directories
