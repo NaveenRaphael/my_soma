@@ -158,34 +158,34 @@ def run_soma_on_multiple_settings(soma_expr_ids: List[str], soma_mocap_target_ds
                             soma_jobs.append(soma_job)
                             continue  # soma results are not available
                         if run_tasks == ['soma']: continue
-                        eval_label_job = eval_label_cfg.copy()
+                        # eval_label_job = eval_label_cfg.copy()
 
-                        eval_label_job.update({
-                            'mocap_gt.fname': mocap_fname,
-                            'mocap_gt.unit': cur_soma_cfg.mocap.unit,
-                            'mocap_rec.fname': cur_soma_cfg.dirs.mocap_out_fname,
-                            'dirs.work_base_dir': cur_soma_cfg.dirs.work_dir.replace('_labeled_mocap', '_eval'),
+                        # eval_label_job.update({
+                        #     'mocap_gt.fname': mocap_fname,
+                        #     'mocap_gt.unit': cur_soma_cfg.mocap.unit,
+                        #     'mocap_rec.fname': cur_soma_cfg.dirs.mocap_out_fname,
+                        #     'dirs.work_base_dir': cur_soma_cfg.dirs.work_dir.replace('_labeled_mocap', '_eval'),
 
-                            # 'soma.expr_id': soma_expr_id,
-                            # 'soma.data_id': soma_data_id,
-                            # 'soma.tracklet_labeling.enable': tracklet_labeling
-                        })
+                        #     # 'soma.expr_id': soma_expr_id,
+                        #     # 'soma.data_id': soma_data_id,
+                        #     # 'soma.tracklet_labeling.enable': tracklet_labeling
+                        # })
 
-                        if ds_name_gt:
-                            gt_mocap_fname = osp.join(mocap_base_dir, ds_name_gt,
-                                                      cur_soma_cfg.mocap.subject_name,
-                                                      f'{cur_soma_cfg.mocap.basename}{mocap_ext}')
-                            assert osp.exists(gt_mocap_fname), FileNotFoundError(f'{gt_mocap_fname}')
-                            eval_label_job.update({
-                                'mocap_gt.fname': gt_mocap_fname,
-                            })
-                        cur_eval_label_cfg = prepare_eval_label_cfg(**eval_label_job)
-                        if not os.path.exists(cur_eval_label_cfg.dirs.eval_pkl_out_fname):
-                            eval_label_jobs.append(eval_label_job)
-                        else:
-                            if 'eval_label_aggregate' in run_tasks:
-                                eval_label_aggregate[eval_aggregate_key].append(
-                                    cur_eval_label_cfg.dirs.eval_pkl_out_fname)
+                        # if ds_name_gt:
+                        #     gt_mocap_fname = osp.join(mocap_base_dir, ds_name_gt,
+                        #                               cur_soma_cfg.mocap.subject_name,
+                        #                               f'{cur_soma_cfg.mocap.basename}{mocap_ext}')
+                        #     assert osp.exists(gt_mocap_fname), FileNotFoundError(f'{gt_mocap_fname}')
+                        #     eval_label_job.update({
+                        #         'mocap_gt.fname': gt_mocap_fname,
+                        #     })
+                        # cur_eval_label_cfg = prepare_eval_label_cfg(**eval_label_job)
+                        # if not os.path.exists(cur_eval_label_cfg.dirs.eval_pkl_out_fname):
+                        #     eval_label_jobs.append(eval_label_job)
+                        # else:
+                        #     if 'eval_label_aggregate' in run_tasks:
+                        #         eval_label_aggregate[eval_aggregate_key].append(
+                        #             cur_eval_label_cfg.dirs.eval_pkl_out_fname)
 
                         if np.all(sorted(run_tasks) == sorted(['soma', 'eval_label'])): continue
 
