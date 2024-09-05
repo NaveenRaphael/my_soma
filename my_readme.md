@@ -41,6 +41,8 @@ Also, the names of the individuals are always taken as `['null']` by default; So
 │       └── marker_dataset
 └── support_files
 │   ├── [ssm_head_marker_corr.npz](download.is.tue.mpg.de/soma/ssm_head_marker_corr.npz)
+│   ├── [blender](https://download.is.tue.mpg.de/download.php?domain=soma&sfile=blender/blend_files.tar.bz2)
+│   │   └── blend_files
 │   ├── evaluation_mocaps
 │   │   └── original
 │   │       └── [SOMA_unlabeled_mpc](https://download.is.tue.mpg.de/download.php?domain=soma&sfile=evaluation_mocaps/original/SOMA_dataset/SOMA_unlabeled_mpc.tar.bz2)
