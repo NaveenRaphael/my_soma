@@ -23,6 +23,10 @@ cd ../soma
 tar -xf ./downloads/bpy-2.83-20200908.tar.bz2 -C ../../../miniforge3/envs/my_soma/lib/python3.7/site-packages/
 tar -xf ./downloads/smpl-fast-derivatives.tar.bz2 -C ../../../miniforge3/envs/my_soma/lib/python3.7/site-packages/psbody_mesh-0.4-py3.7-linux-x86_64.egg/
 
+mkdir -p support_files/marker_layouts
+mkdir -p support_files/smplx
+mkdir -p support_files/evaluation_mocaps/original
+mkdir -p support_files/smplx/amass_neutral
 tar -xf ./downloads/SOMA.tar.bz2 -C ./support_files/marker_layouts/
 tar -xf ./downloads/smplx_locked_head.tar.bz2 -C ./support_files/smplx/
 tar -xf ./downloads/extra_smplx_data.tar.bz2 -C ./support_files/smplx/
@@ -35,3 +39,5 @@ tar -xf ./downloads/TotalCapture.tar.bz2 -C ./support_files/smplx/amass_neutral/
 tar -xf ./downloads/Transitions.tar.bz2 -C ./support_files/smplx/amass_neutral/
   
 tar -xf ./downloads/SOMA_unlabeled_mpc.tar.bz2 -C ./support_files/evaluation_mocaps/original/
+
+cp ./downloads/ssm_head_marker_corr.npz ./support_files/
