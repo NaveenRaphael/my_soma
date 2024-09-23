@@ -185,3 +185,10 @@ bpy-2.83-20200908.tar.bz2
 smpl-fast-derivatives.tar.bz2
 training_experiments/V48_02_SOMA/OC_05_G_03_real_000_synt_100/evaluations/mosh_results_tracklet/SOMA_unlabeled_mpc/SOMA_unlabeled_mpc_smplx.json
 support_files/blender/blend_files
+training_experiments/V48_02_SOMA/OC_05_G_03_real_000_synt_100/evaluations/mosh_results_tracklet/SOMA_unlabeled_mpc/['null']/walk_003_stageii.pkl
+training_experiments/V48_02_SOMA/OC_05_G_03_real_000_synt_100/evaluations/mosh_results_tracklet/SOMA_unlabeled_mpc/['null']/male_stagei.ply
+training_experiments/V48_02_SOMA/OC_05_G_03_real_000_synt_100/evaluations/mosh_results_tracklet/SOMA_unlabeled_mpc/['null']/male_stagei.pkl
+training_experiments/V48_02_SOMA/OC_05_G_03_real_000_synt_100/evaluations/mosh_results_tracklet/SOMA_unlabeled_mpc/['null']/male_stagei.json
+training_experiments/V48_02_SOMA/OC_05_G_03_real_000_synt_100/evaluations/mosh_results_tracklet/SOMA_unlabeled_mpc/['null']/male_stagei.c3d
+training_experiments/V48_02_SOMA/OC_05_G_03_real_000_synt_100/evaluations/soma_labeled_mocap_tracklet/SOMA_unlabeled_mpc/['null']
+training_experiments/V48_02_SOMA/OC_05_G_03_real_000_synt_100/evaluations/soma_labeled_mocap_tracklet/SOMA_unlabeled_mpc/soma_subject1
