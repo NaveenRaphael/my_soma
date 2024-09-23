@@ -35,6 +35,49 @@ from typing import Union
 from loguru import logger
 from omegaconf import DictConfig
 from omegaconf import OmegaConf
+from moshpp.mosh_head import run_moshpp_once
+
+def run_parallel_jobs_mosh(jobs: List[DictConfig], parallel_cfg: DictConfig = None,
+                      base_parallel_cfg: Union[DictConfig, Union[Path, str]] = None) -> None:
+
+    if parallel_cfg is None:
+        parallel_cfg = {}  # todo update parallel cfg in case it is provided
+
+    if base_parallel_cfg is None:
+        base_parallel_cfg = {}
+    elif not isinstance(base_parallel_cfg, DictConfig):
+        base_parallel_cfg = OmegaConf.load(base_parallel_cfg)
+
+    parallel_cfg = OmegaConf.merge(base_parallel_cfg, OmegaConf.create(parallel_cfg))
+
+    pool_size = parallel_cfg.pool_size
+    logger.info(f'#Job(s) submitted: {len(jobs)}')
+    max_num_jobs = parallel_cfg.get('max_num_jobs', -1)
+    if max_num_jobs and max_num_jobs > 0:
+        jobs = jobs[:max_num_jobs]
+        logger.info(f'max_num_jobs is set to {max_num_jobs}. choosing the first #Job(s): {len(jobs)}')
+
+    if pool_size==0:
+        raise NotImplementedError('This functionality is not released for current SOMA.')
+
+
+    if parallel_cfg.randomly_run_jobs:
+        from random import shuffle
+        shuffle(jobs)
+        logger.info(f'Will run the jobs in random order.')
+    if len(jobs) == 0: return
+
+
+
+    if pool_size == 0:
+        raise NotImplementedError('This functionality is not released for current SOMA.')
+
+    elif pool_size < 0:
+        return
+    else:
+        for job in jobs:
+            run_moshpp_once(job)
+            # print(job)
 
 
 def run_parallel_jobs(func, jobs: List[DictConfig], parallel_cfg: DictConfig = None,

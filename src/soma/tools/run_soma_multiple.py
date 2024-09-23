@@ -48,7 +48,7 @@ from soma.tools.eval_labeling import evaluate_labeling_once, aggregate_labeling_
 from soma.tools.eval_labeling import prepare_eval_label_cfg
 from soma.tools.eval_v2v import evaluate_v2v_once, aggregate_v2v_perframe_results
 from soma.tools.eval_v2v import prepare_eval_v2v_cfg
-from soma.tools.parallel_tools import run_parallel_jobs
+from soma.tools.parallel_tools import run_parallel_jobs, run_parallel_jobs_mosh
 from soma.tools.soma_processor import SOMAMoCapPointCloudLabeler
 from soma.tools.soma_processor import run_soma_once
 
@@ -254,7 +254,7 @@ def run_soma_on_multiple_settings(soma_expr_ids: List[str], soma_mocap_target_ds
         base_parallel_cfg = OmegaConf.load(osp.join(app_support_dir, 'conf/parallel_conf/moshpp_parallel.yaml'))
         moshpp_parallel_cfg = OmegaConf.merge(base_parallel_cfg, OmegaConf.create(parallel_cfg))
         mosh_jobs = universal_mosh_jobs_filter(mosh_jobs, determine_shape_for_each_seq=mosh_stagei_perseq)
-        run_parallel_jobs(func=run_moshpp_once, jobs=mosh_jobs, parallel_cfg=moshpp_parallel_cfg)
+        run_parallel_jobs_mosh(jobs=mosh_jobs, parallel_cfg=moshpp_parallel_cfg)
 
     if 'render' in run_tasks:
         logger.info('Submitting render jobs.')
