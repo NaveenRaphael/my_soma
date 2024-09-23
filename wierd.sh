@@ -6,8 +6,11 @@ pip3 install torch==1.8.2+cu102 torchvision==0.9.2+cu102 torchaudio==0.8.2 -f ht
 pip install -r requirements.txt 
 python setup.py develop
 cd ../mesh
+sudo apt-get install libboost-dev
 python setup.py install
 cd ../moshpp
+sudo apt install libtbb-dev
+sudo apt install libeigen3-dev
 pip install -r requirements.txt 
 cd src/moshpp/scan2mesh
 pip install -r requirements.txt 
