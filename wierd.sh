@@ -1,7 +1,7 @@
 mamba create -n my_soma python=3.7 -y
 mamba activate my_soma
 mamba info
-mamba install -c conda-forge ezc3d -y
+mamba install -c conda-forge ezc3d ipywidgets -y
 pip3 install torch==1.8.2+cu102 torchvision==0.9.2+cu102 torchaudio==0.8.2 -f https://download.pytorch.org/whl/lts/1.8/torch_lts.html 
 pip install -r requirements.txt 
 python setup.py develop
