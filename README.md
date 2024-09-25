@@ -1,3 +1,6 @@
+This repo involves some helper functions to help me more easily run the code in the original repo. 
+
+# The rest of the Readme is from the official repo
 ## SOMA: Solving Optical Marker-Based MoCap Automatically, ICCV'21
 
 This repository contains the official PyTorch implementation of:
