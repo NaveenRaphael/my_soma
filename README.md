@@ -1,99 +1,81 @@
-This repo involves some helper functions to help me more easily run the code in the original repo. 
+# New ReadMe
+This is a new readme; please check the git commits to see what this used to contain. Also please refer to [the original readme](./old_README.md)
 
-# The rest of the Readme is from the official repo
-## SOMA: Solving Optical Marker-Based MoCap Automatically, ICCV'21
+## What this repo is meant to do
+I found it difficult to run the official repository, so this is my documentation to run the code in a relatively reliable manner. Ideally, the steps in this readme should be reproducable, though I must confess I have only been able to run this in my present xUbuntu 24 system; and not in linux mint 22. 
 
-This repository contains the official PyTorch implementation of:
+## My Changes to the workflow
+The only "change" I believe I have made to the workflow is using miniforge(mamba) instead of conda.  
 
-SOMA: Solving Optical Marker-Based MoCap Automatically\
-Nima Ghorbani and Michael J. Black\
-[Paper](https://download.is.tue.mpg.de/soma/SOMA_ICCV21.pdf) | [Supp.Mat.](https://download.is.tue.mpg.de/soma/SOMA_Suppmat.pdf) | [Video](https://www.youtube.com/watch?v=BEFCqIefLA8&t=1s&ab_channel=MichaelBlack) | [Project website](https://soma.is.tue.mpg.de/) | [Poster](https://download.is.tue.mpg.de/soma/SOMA_Poster.pdf)
+## Prereqs
+- Mamba (Conda can be used, just change the commands appropriately)
+- 
 
-![alt text](https://download.is.tue.mpg.de/soma/tutorials/soma_github_teaser.gif "mocap point clouds (black dots in the back) turned into labeled markers (colored dots)")
+# Instructions
+1. After you git clone the repo, change the name to `soma`
+1. I had downloaded all the required files into a local directory `./downloads/` and I know the relative path from this directory to the miniforge folder. Make appropriate changes to the [`init.sh`](./init.sh) file. **NOTE THAT YOU CANNOT ACTIVATE ENVIRONMENTS EASILY WITH A BASH SCRIPT, SO YOU HAVE TO COPY PASTE THESE COMMANDS INTO THE SHELL**
+1. Additionally, install tbb in the environment; this is not present in ubuntu24, so it will have to be installed via mamba (There is one more error which ill rememeber how to fix when I see it again)
+1. Once the environment is made, you need to modify the following files
+ - welp i need to write these as I do these again
 
-SOMA **automatically transforms raw marker-based mocap point clouds** (black dots in the back) into **solved SMPL-X bodies** and **labeled markers** (colored dots).
+## Known issues
 
-## Installation
-
-SOMA is originally developed in Python 3.7, PyTorch 1.8.2 LTS, for Ubuntu 20.04.2 LTS. 
-Below we prepare the python environment using [Anaconda](https://www.anaconda.com/products/individual), 
-however, we opt for a simple pip package manager for installing dependencies.
-
-````
-sudo apt install libatlas-base-dev
-sudo apt install libpython3.7
-sudo apt install libtbb2
-
-conda create -n soma python=3.7 
-conda install -c conda-forge ezc3d
-
-pip3 install torch==1.8.2+cu102 torchvision==0.9.2+cu102 torchaudio==0.8.2 -f https://download.pytorch.org/whl/lts/1.8/torch_lts.html
-
-````
-ezc3d installation is currently not supported by pip.
-
-Assuming that you have already cloned this repository to your local drive 
-go to the root directory of SOMA code and run
-````
-pip install -r requirements.txt
-python setup.py develop
-````
-Copy the precompiled 
-[smpl-fast-derivatives](https://download.is.tue.mpg.de/download.php?domain=soma&sfile=smpl-fast-derivatives.tar.bz2) 
-into your python site-packages folder, i.e. ````anaconda3/envs/soma/lib/python3.7/site-packages````.
-The final directory should look like ````anaconda3/envs/soma/lib/python3.7/site-packages/psbody/smpl````.
-
-Install the psbody.mesh library following the instructions in [https://github.com/MPI-IS/mesh](https://github.com/MPI-IS/mesh).
-Hint: clone the mesh repository and run the following from the anaconda environment:  ````python setup.py install ````.
-
-To use the rendering capabilities first install an instance of Blender-2.83 LTS on your machine.
-Afterward uncompress contents of the precompiled 
-[bpy-2.83](https://download.is.tue.mpg.de/download.php?domain=soma&sfile=blender/bpy-2.83-20200908.tar.bz2) 
-into your python site-packages folder, i.e. ````anaconda3/envs/soma/lib/python3.7/site-packages````. 
-
-Last but not least, the current SOMA code relies on [MoSh++](https://github.com/nghorbani/moshpp) mocap solver. 
-Please install MoSh++ following the guidelines in its repository.
-
-
-## Using SOMA
-There are multiple main parts of the codebase that we try to explain in the [Tutorials](src/tutorials):
-- [Run SOMA On MoCap Point Cloud Data](src/tutorials/run_soma_on_soma_dataset.ipynb)
-- [Label Priming an Unknown Marker Layout](src/tutorials/label_priming.ipynb)
-- [SOMA Ablative Studies](src/tutorials/ablation_study.ipynb)
-- [Solve Already Labeled MoCaps With MoSh++](src/tutorials/solve_labeled_mocap.ipynb)
-
-## Citation
-
-Please cite the following paper if you use this code directly or indirectly in your research/projects:
+Main cell 1: I cannot:
+ 
+```
+        'trainer.fast_dev_run': True, # if true then only one iteration of training and validation is done.
 
 ```
-@inproceedings{SOMA:ICCV:2021,
-  title = {{SOMA}: Solving Optical Marker-Based MoCap Automatically},
-  author = {Ghorbani, Nima and Black, Michael J.},
-  booktitle = {Proceedings of IEEE/CVF International Conference on Computer Vision (ICCV)},
-  month = oct,
-  year = {2021},
-  doi = {},
-  month_numeric = {10}}
+
+I cannot make that true without it giving a version error; and I cannot find which version is supposed to work?
+(Because of this, i needed to use the default trained SOMA)
+
+# Files downloaded and generated
+
 ```
-
-## License
-
-Software Copyright License for **non-commercial scientific research purposes**. Please read carefully
-the [terms and conditions](./LICENSE) and any accompanying documentation before you download and/or
-use the SOMA data and software, (the "Data & Software"), software, scripts, and animations. 
-By downloading and/or using the Data & Software (including downloading, cloning, installing, and any other use of this repository), 
-you acknowledge that you have read these terms
-and conditions, understand them, and agree to be bound by them. If you do not agree with these terms and conditions, you
-must not download and/or use the Data & Software. 
-Any infringement of the terms of this agreement will automatically terminate
-your rights under this [License](./LICENSE).
-
-## Contact
-
-The code in this repository is developed by [Nima Ghorbani](https://nghorbani.github.io/) 
-while at [Max-Planck Institute for Intelligent Systems, Tübingen, Germany](https://is.mpg.de/person/nghorbani).
-
-If you have any questions you can contact us at [soma@tuebingen.mpg.de](mailto:amass@tuebingen.mpg.de).
-
-For commercial licensing, contact [ps-licensing@tue.mpg.de](mailto:ps-licensing@tue.mpg.de)
+├── data
+│   ├── V48_01_SOMA [1]
+│   └── V48_02_SOMA [0] First Cell
+├── support_files
+│   ├── evaluation_mocaps
+│   │   └── original
+│   │       └── SOMA_unlabeled_mpc [2]
+│   ├── marker_layouts
+│   │   └── SOMA [3]
+│   ├── smplx [4]
+│   │   ├── amass_neutral
+│   │   │   ├── ACCAD [5]
+│   │   │   ├── CMU [6]
+│   │   │   ├── HumanEva [7]
+│   │   │   ├── PosePrior [8]
+│   │   │   ├── TotalCapture [9]
+│   │   │   └── Transitions [10]
+│   └── ssm_head_marker_corr.npz [11]
+├── training_experiments [0] Cell 1
+│   └── V48_02_SOMA
+│       └── OC_05_G_03_real_000_synt_100 [12]
+│           ├── evaluations
+│           │   ├── mosh_results_tracklet [0] Cell Mosh
+│           │   │   └── SOMA_unlabeled_mpc
+│           │   │       ├── ['null']
+│           │   │       └── SOMA_unlabeled_mpc_smplx.json
+│           │   └── soma_labeled_mocap_tracklet [0] Cell 2
+│           │       └── SOMA_unlabeled_mpc
+│           │           ├── ['null']
+│           │           └── soma_subject1 [0] Copy from brother folder
+│           └── V48_02_SOMA_OC_05_G_03_real_000_synt_100.yaml [0] Generated, dont change
+└── wierd.sh [mine]
+```
++ 0 - Generated by code, followed by cell and other info
++ 1 - [V48_01_SOMA](download.is.tue.mpg.de/download.php?domain=soma&sfile=smplx/data/V48_01_SOMA.tar.bz2)
++ 2 - [SOMA_unlabeled_mpc](https://download.is.tue.mpg.de/download.php?domain=soma&sfile=evaluation_mocaps/original/SOMA_dataset/SOMA_unlabeled_mpc.tar.bz2)
++ 3 - [SOMA](download.is.tue.mpg.de/download.php?domain=soma&sfile=smplx/marker_layouts/SOMA.tar.bz2)
++ 4 - [smplx](https://download.is.tue.mpg.de/download.php?domain=smplx&sfile=smplx_locked_head.tar.bz2) and [this](https://download.is.tue.mpg.de/download.php?domain=soma&sfile=smplx/extra_smplx_data.tar.bz2)
++ 5 - [ACCAD](https://download.is.tue.mpg.de/download.php?domain=amass&resume=1&sfile=amass_per_dataset/smplx/neutral/mosh_results/ACCAD.tar.bz2)
++ 6 - [CMU](https://download.is.tue.mpg.de/download.php?domain=amass&resume=1&sfile=amass_per_dataset/smplx/neutral/mosh_results/CMU.tar.bz2)
++ 7 -  [HumanEva](https://download.is.tue.mpg.de/download.php?domain=amass&resume=1&sfile=amass_per_dataset/smplx/neutral/mosh_results/HumanEva.tar.bz2)
++ 8 -  [PosePrior](https://download.is.tue.mpg.de/download.php?domain=amass&resume=1&sfile=amass_per_dataset/smplx/neutral/mosh_results/PosePrior.tar.bz2)
++ 9 -  [TotalCapture](https://download.is.tue.mpg.de/download.php?domain=amass&resume=1&sfile=amass_per_dataset/smplx/neutral/mosh_results/TotalCapture.tar.bz2)
++ 10 -  [Transitions](https://download.is.tue.mpg.de/download.php?domain=amass&resume=1&sfile=amass_per_dataset/smplx/neutral/mosh_results/Transitions.tar.bz2)
++ 11 - [ssm_head_marker_corr.npz](download.is.tue.mpg.de/soma/ssm_head_marker_corr.npz)
++ 12 - [OC_05_G_03_real_000_synt_100](https://download.is.tue.mpg.de/download.php?domain=soma&sfile=training_experiments/V48_02_SOMA.tar.bz2) (almost all)
