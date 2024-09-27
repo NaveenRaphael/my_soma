@@ -205,7 +205,7 @@ def run_soma_on_multiple_settings(soma_expr_ids: List[str], soma_mocap_target_ds
 
                         cur_mosh_cfg = MoSh.prepare_cfg(**mosh_job.copy())
                         mosh_stageii_pkl_fname = cur_mosh_cfg.dirs.stageii_fname
-
+                        # print(f"{mosh_stageii_pkl_fname} might exist")
                         if not osp.exists(mosh_stageii_pkl_fname):
                             mosh_jobs.append(mosh_job)
                             continue  # mosh results are not available
